@@ -4,9 +4,15 @@ const express = require('express')
 const router = express.Router()
 
 // controller functions
-const { getModule } = require('../controllers/moduleController')
+const { getModule, addModuleReview } = require('../controllers/moduleController')
 
 // GET a single module
 router.get('/', getModule)
+
+// UPDATE a single module with review
+router.patch('/addModuleReview', addModuleReview)
+
+// UPDATE module with the new review
+
 
 module.exports = router

@@ -6,13 +6,30 @@ const Schema = mongoose.Schema
 const moduleSchema = new Schema({
     moduleCode: {
         type: String,
+        required: true,
+        unique: true
+    },
+    description: {
+        type: String,
         required: true
     },
     title: {
         type: String,
         required: true
     },
-    reviews: {
+    department: {
+        type: String,
+        required: true
+    },
+    faculty: {
+        type: String,
+        required: true
+    },
+    moduleCredit: {
+        type: String,
+        required: true
+    },
+    reviewIds: {
         type: [mongoose.ObjectId],
         required: true
     }
