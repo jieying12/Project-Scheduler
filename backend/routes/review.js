@@ -7,7 +7,7 @@ const router = express.Router()
 const { createReview, getReviewsByModule } = require('../controllers/reviewController')
 
 // POST a new review
-router.post('/', createReview)
+router.post('/createReview', createReview)
 
 // GET all reviews by module
 router.get('/getReviewsByModule', getReviewsByModule)

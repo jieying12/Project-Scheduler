@@ -7,7 +7,7 @@ const router = express.Router()
 const { getModule, addModuleReview } = require('../controllers/moduleController')
 
 // GET a single module
-router.get('/', getModule)
+router.get('/getModule', getModule)
 
 // UPDATE a single module with review
 router.patch('/addModuleReview', addModuleReview)
