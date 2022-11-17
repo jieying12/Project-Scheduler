@@ -12,7 +12,4 @@ router.get('/', getModule)
 // UPDATE a single module with review
 router.patch('/addModuleReview', addModuleReview)
 
-// UPDATE module with the new review
-
-
 module.exports = router

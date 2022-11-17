@@ -4,10 +4,12 @@ const express = require('express')
 const router = express.Router()
 
 // controller functions
-const { createReview } = require('../controllers/reviewController')
+const { createReview, getReviewsByModule } = require('../controllers/reviewController')
 
 // POST a new review
 router.post('/', createReview)
 
+// GET all reviews by module
+router.get('/getReviewsByModule', getReviewsByModule)
 
 module.exports = router
