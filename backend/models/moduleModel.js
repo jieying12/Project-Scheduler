@@ -31,6 +31,7 @@ const moduleSchema = new Schema({
     },
     reviewIds: {
         type: [mongoose.ObjectId],
+        ref: 'reviews',
         required: true
     }
 }, { timestamps: true })
