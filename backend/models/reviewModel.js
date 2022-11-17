@@ -3,19 +3,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 // timestamp logs when the object was created etc
-const moduleSchema = new Schema({
-    moduleCode: {
-        type: String,
+const reviewSchema = new Schema({
+    userId: {
+        type: mongoose.ObjectId,
         required: true
     },
-    title: {
+    text: {
         type: String,
-        required: true
-    },
-    reviews: {
-        type: [mongoose.ObjectId],
         required: true
     }
 }, { timestamps: true })
 
-module.exports = mongoose.model('Module', moduleSchema)
+module.exports = mongoose.model('Review', reviewSchema)
