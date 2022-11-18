@@ -23,6 +23,7 @@ const createReview = async (req, res) => {
             let url = constants.NUSMODS_API_URL + constants.CURR_ACADYEAR + '/modules/' + moduleCode + '.json'
             let result = await axios.get(url)
 
+            // To be scraped next time if all module info loaded in DB
             const description = result.data.description
             const title = result.data.title
             const department = result.data.department

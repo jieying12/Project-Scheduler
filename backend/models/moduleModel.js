@@ -10,8 +10,7 @@ const moduleSchema = new Schema({
         unique: true
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     title: {
         type: String,
