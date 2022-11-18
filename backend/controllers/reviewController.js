@@ -1,5 +1,7 @@
 const Review = require('../models/reviewModel')
 const Module = require('../models/moduleModel')
+const constants = require('../constants')
+const axios = require('axios')
 
 // create a review and concurrently update the module object
 const createReview = async (req, res) => {
@@ -26,7 +28,7 @@ const createReview = async (req, res) => {
             const department = result.data.department
             const faculty = result.data.faculty
             const moduleCredit = result.data.moduleCredit
-            const reviewIds = [reviewId]
+            const reviewIds = [review.id]
 
             module = await Module.create({moduleCode, description, title, department, faculty, moduleCredit, reviewIds})
         }

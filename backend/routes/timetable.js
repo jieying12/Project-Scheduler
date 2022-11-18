@@ -4,9 +4,12 @@ const express = require('express')
 const router = express.Router()
 
 // controller functions
-const { createTimetable } = require('../controllers/timetableController')
+const { createTimetable, getTimetable } = require('../controllers/timetableController')
 
 // create or update a timetable
 router.patch('/createTimetable', createTimetable)
+
+// get timetable by user, acadYear and semester
+router.get('/getTimetable', getTimetable)
 
 module.exports = router

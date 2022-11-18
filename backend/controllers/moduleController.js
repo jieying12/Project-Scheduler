@@ -1,4 +1,3 @@
-const Module = require('../models/moduleModel')
 const axios = require('axios')
 const constants = require('../constants')
 

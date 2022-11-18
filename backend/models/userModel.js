@@ -18,6 +18,11 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  timetableIds: {
+    type: [mongoose.ObjectId],
+    ref: 'timetables',
+    required: true
   }
 })
 
