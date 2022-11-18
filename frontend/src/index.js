@@ -9,7 +9,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 const theme = createTheme({
   palette: {
     background: {
-      default: "#f3dec4"
+      // default: "#f3dec4"
     },
     primary: {//orange
       main: '#ff7d4b',
@@ -27,7 +27,8 @@ const theme = createTheme({
     }
   },
   text: {
-    primary: '#515151',
+    primary: '#ff7d4b',
+    // primary: '#515151',
     secondary: '#A0A3B1',
     disabled: '#FFFFFF'
   },
@@ -37,7 +38,7 @@ const theme = createTheme({
   typography: {
     fontFamily: "Poppins, Roboto, Helvetica, Arial, sans-serif",
     subtitle2: {
-      color: '#A0A3B1'
+      color: '#1c58b5'
     }
   }
 })
