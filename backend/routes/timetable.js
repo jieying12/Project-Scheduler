@@ -10,6 +10,6 @@ const { createTimetable, getTimetable } = require('../controllers/timetableContr
 router.patch('/createTimetable', createTimetable)
 
 // get timetable by user, acadYear and semester
-router.get('/getTimetable', getTimetable)
+router.post('/getTimetable', getTimetable)
 
 module.exports = router

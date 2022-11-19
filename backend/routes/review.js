@@ -10,6 +10,6 @@ const { createReview, getReviewsByModule } = require('../controllers/reviewContr
 router.post('/createReview', createReview)
 
 // GET all reviews by module
-router.get('/getReviewsByModule', getReviewsByModule)
+router.post('/getReviewsByModule', getReviewsByModule)
 
 module.exports = router

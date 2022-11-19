@@ -2,12 +2,22 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Component } from "react"
 import './Modules.css';
-import axios from 'axios';
 // import Navbar from "../components/Navbar"
 
-const getModules = `${process.env.REACT_APP_API_URL}/modules/getModules`
 const defaultState = {
     modules: []
+}
+
+let reqBody = {
+    skip: 0
+}
+
+let req = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(reqBody)
 }
 
 class Modules extends Component {
@@ -18,17 +28,25 @@ class Modules extends Component {
         // this.handleInputChange = this.handleInputChange.bind(this)
     }
 
-    componentDidMount() {
-        console.log(getModules)
-        axios.post(getModules, {skip: 0}, {}).then(res => {
-            console.log(res.data)
-            this.setState({
-                ["modules"]: res.data
-            })
-            return res.data
-        }).catch(err => {
-          console.log(err)
-        })
+    async componentDidMount() {
+        const res = await fetch('/api/modules/getModules', req);
+        const data = await res.json()
+        console.log(data)
+        this.setState({
+            ["modules"]: res.data
+        })      
+    }
+
+    async getNextPageData(page) {
+        reqBody["skip"] = (Number(page) - 1) * 10
+        req["body"] = JSON.stringify(reqBody)
+
+        const res = await fetch('/api/modules/getModules', req)
+        const data = await res.json()
+        console.log(data)
+        this.setState({
+            ["modules"]: res.data
+        }) 
     }
 
     render() {
