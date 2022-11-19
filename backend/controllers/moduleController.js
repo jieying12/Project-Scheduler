@@ -21,7 +21,16 @@ const getModules = async (req, res) => {
     try {
         let modules = await Module.find().sort('moduleCode').skip(skip).limit(10)
 
-        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.status(200).json(modules)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+const getTotalModulesCount = async (req, res) => {
+    try {
+        let modules = await Module.countDocuments()
+
         res.status(200).json(modules)
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -73,6 +82,7 @@ const deleteAllModules = async (req, res) => {
 module.exports = {
     getModule,
     getModules,
+    getTotalModulesCount,
     loadAllModules,
     deleteAllModules
 }

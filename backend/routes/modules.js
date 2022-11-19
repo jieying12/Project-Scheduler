@@ -4,13 +4,16 @@ const express = require('express')
 const router = express.Router()
 
 // controller functions
-const { getModule, loadAllModules, deleteAllModules, getModules } = require('../controllers/moduleController')
+const { getModule, loadAllModules, deleteAllModules, getModules, getTotalModulesCount } = require('../controllers/moduleController')
 
 // GET a single module
 router.post('/getModule', getModule)
 
 // GET modules by limit
 router.post('/getModules', getModules)
+
+// GET total number of modules
+router.get('/getTotalModulesCount', getTotalModulesCount)
 
 // ONLY FOR POSTMAN USE
 // GET all modules

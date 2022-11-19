@@ -24,7 +24,7 @@ class Navbar extends Component {
                         </a>
                     </li>
                     <li>
-                        <a className="nav-links" href="index.html">
+                        <a className="nav-links" href="/modules">
                             <FaInfoCircle/> All Modules
                         </a>
                     </li>

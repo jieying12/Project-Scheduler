@@ -4,7 +4,9 @@ import { Component } from "react"
 import './Modules.css';
 
 const defaultState = {
-    modules: []
+    modules: [],
+    skip: 0,
+    totalModules: 0
 }
 
 let reqBody = {
@@ -24,26 +26,46 @@ class Modules extends Component {
     constructor(props) {
         super(props)
         this.state = defaultState
-        // this.handleInputChange = this.handleInputChange.bind(this)
+        this.getNextPageData = this.getNextPageData.bind(this)
+        this.getPreviousPageData = this.getPreviousPageData.bind(this)
     }
 
     async componentDidMount() {
-        const res = await fetch('/api/modules/getModules', req);
-        const data = await res.json()
+        const modules = await fetch('/api/modules/getModules', req)
+        const modulesData = await modules.json()
+        const totalModulesCount = await fetch('/api/modules/getTotalModulesCount')
+        const totalModulesCountData = await totalModulesCount.json()
         this.setState({
-            ["modules"]: data
-        })    
+            ["modules"]: modulesData,
+            ["totalModules"]: totalModulesCountData
+        })   
     }
 
-    async getNextPageData(page) {
-        reqBody["skip"] = (Number(page) - 1) * 10
+    async getNextPageData() {
+        reqBody["skip"] = this.state.skip + 10
         req["body"] = JSON.stringify(reqBody)
 
         const res = await fetch('/api/modules/getModules', req)
         const data = await res.json()
         this.setState({
-            ["modules"]: data
+            ["modules"]: data,
+            ["skip"]: reqBody["skip"]
         }) 
+        // window.scrollTo(0, 0);
+    }
+
+    async getPreviousPageData() {
+        reqBody["skip"] = this.state.skip - 10
+        console.log("PREVIOUS: " + reqBody["skip"])
+        req["body"] = JSON.stringify(reqBody)
+
+        const res = await fetch('/api/modules/getModules', req)
+        const data = await res.json()
+        this.setState({
+            ["modules"]: data,
+            ["skip"]: reqBody["skip"]
+        }) 
+        // window.scrollTo(0, 0);
     }
 
     renderCard(module) {
@@ -55,7 +77,7 @@ class Modules extends Component {
                     <Card.Text>
                         {module.description}
                     </Card.Text>
-                    <Button variant="primary">Read More</Button>
+                    <button type="button" class="btn btn-outline-dark">Read More</button>
                 </Card.Body>
             </Card>
         )
@@ -66,10 +88,29 @@ class Modules extends Component {
             <div className="content">
                 <div className="container">
                     {this.state.modules.map(module => this.renderCard(module))}
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            { this.state.skip == 0 ?
+                                <li class="page-item disabled">
+                                    <a class="page-link">Previous</a>
+                                </li> :
+                                <li class="page-item">
+                                    <a class="page-link" onClick={this.getPreviousPageData}>Previous</a>
+                                </li>
+                            }
+
+                            { this.state.skip + 10 > this.state.totalModules ?
+                                <li class="page-item disabled">
+                                    <a class="page-link" onClick={this.getNextPageData}>Next</a>
+                                </li> :
+                                <li class="page-item">
+                                    <a class="page-link" onClick={this.getNextPageData}>Next</a>
+                                </li> 
+                            }
+                        </ul>
+                    </nav>
                 </div>
             </div>
-            
-            
         )
     }
 }
