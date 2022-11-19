@@ -2,7 +2,6 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Component } from "react"
 import './Modules.css';
-// import Navbar from "../components/Navbar"
 
 const defaultState = {
     modules: []
@@ -31,10 +30,9 @@ class Modules extends Component {
     async componentDidMount() {
         const res = await fetch('/api/modules/getModules', req);
         const data = await res.json()
-        console.log(data)
         this.setState({
-            ["modules"]: res.data
-        })      
+            ["modules"]: data
+        })    
     }
 
     async getNextPageData(page) {
@@ -43,30 +41,34 @@ class Modules extends Component {
 
         const res = await fetch('/api/modules/getModules', req)
         const data = await res.json()
-        console.log(data)
         this.setState({
-            ["modules"]: res.data
+            ["modules"]: data
         }) 
+    }
+
+    renderCard(module) {
+        return (
+            <Card className="card">
+                <Card.Header>{module.moduleCode}</Card.Header>
+                <Card.Body>
+                    <Card.Title>{module.title}</Card.Title>
+                    <Card.Text>
+                        {module.description}
+                    </Card.Text>
+                    <Button variant="primary">Read More</Button>
+                </Card.Body>
+            </Card>
+        )
     }
 
     render() {
         return (
-            <div>
-                {/* <div>
-                   <Navbar/> 
-                </div> */}
-                <Card className="card">
-                    <Card.Header>Featured</Card.Header>
-                    <Card.Body>
-                        <Card.Title>Special title treatment</Card.Title>
-                        <Card.Text>
-                            With supporting text below as a natural lead-in to additional content.
-                        </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                </Card>
-                
+            <div className="content">
+                <div className="container">
+                    {this.state.modules.map(module => this.renderCard(module))}
+                </div>
             </div>
+            
             
         )
     }
