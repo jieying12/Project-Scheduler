@@ -5,6 +5,7 @@ import App from './App';
 import { AuthContextProvider } from './context/AuthContext'
 import { createTheme, ThemeProvider } from '@mui/material';
 import CssBaseline from "@mui/material/CssBaseline";
+import "bootstrap/dist/css/bootstrap.min.css"
 
 const theme = createTheme({
   palette: {

@@ -4,10 +4,13 @@ const express = require('express')
 const router = express.Router()
 
 // controller functions
-const { getModule, loadAllModules, deleteAllModules } = require('../controllers/moduleController')
+const { getModule, loadAllModules, deleteAllModules, getModules } = require('../controllers/moduleController')
 
 // GET a single module
 router.get('/getModule', getModule)
+
+// GET modules by limit
+router.get('/getModules', getModules)
 
 // ONLY FOR POSTMAN USE
 // GET all modules

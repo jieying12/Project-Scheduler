@@ -15,6 +15,19 @@ const getModule = async (req, res) => {
     }
 }
 
+// get modules by limit of 10
+const getModules = async (req, res) => {
+    const {skip} = req.body
+    try {
+        let modules = await Module.find().sort('moduleCode').skip(skip).limit(10)
+
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.status(200).json(modules)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
 // ONLY FOR POSTMAN USE ONLY
 // To load all module info
 const loadAllModules = async (req, res) => {
@@ -59,6 +72,7 @@ const deleteAllModules = async (req, res) => {
 
 module.exports = {
     getModule,
+    getModules,
     loadAllModules,
     deleteAllModules
 }
