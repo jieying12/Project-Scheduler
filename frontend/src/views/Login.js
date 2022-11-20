@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link as RouterLink } from "react-router-dom";
+import { useLogin } from "../hooks/useLogin"
 
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
@@ -20,11 +21,12 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const {login, error, isLoading} = useLogin()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    console.log(email, password)
+    await login(email, password)
   }
 
   const handleShowPassword = () => setShowPassword(!showPassword);
@@ -44,7 +46,7 @@ const Login = () => {
           <Typography sx={{ color: "secondary.main" }} variant="h4" fontWeight="bold">
             Login
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1, textAlign: 'center' }}>
             <TextField
               margin="normal"
               required
@@ -90,19 +92,20 @@ const Login = () => {
                   </InputAdornment>
               }}
             />
-            <div style={{ display: "flex", flexDirection: "row"}}>
-              <Typography variant="body2">Yet to have an account?</Typography>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <Typography variant="body2">Don't have an account?</Typography>
               <Link component={RouterLink} to="/signup" variant="body2" color="secondary" style={{ paddingLeft: 4 }}>
                 Sign Up
               </Link>
             </div>
-            <CustomButton variant='contained' color="primary"
+            <CustomButton disabled={isLoading} variant='contained' color="primary"
               type="submit"
-              fullWidth
+              sm={2}
               sx={{ mt: 3, mb: 2 }}
             >
               Login
             </CustomButton>
+            {error && <div className="error">{error}</div>}
           </Box>
         </Box>
       </Grid>

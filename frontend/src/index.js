@@ -36,6 +36,17 @@ const theme = createTheme({
   shape: {
     borderRadius: 12,
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 28,
+          minWidth: '120px',
+          minHeight: '40px'
+        },
+      },
+    },
+  },
   typography: {
     fontFamily: "Poppins, Roboto, Helvetica, Arial, sans-serif",
     subtitle2: {
