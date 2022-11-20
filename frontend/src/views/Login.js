@@ -10,9 +10,7 @@ import { IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import EmailIcon from '@mui/icons-material/Email';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import CustomButton from '../components/CustomButton';
 
 import Bg from '../assets/landing_page.png'
@@ -46,7 +44,7 @@ const Login = () => {
           <Typography sx={{ color: "secondary.main" }} variant="h4" fontWeight="bold">
             Login
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1, textAlign: 'center' }}>
+          <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth:450, mt: 1, textAlign: 'center' }}>
             <TextField
               margin="normal"
               required

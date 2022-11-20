@@ -23,8 +23,8 @@ const theme = createTheme({
       // veryLight: '#2e74b4'
     },
     action: {
-      disabledBackground: '#2e74b4',
-      hover: '#2e74b4',
+      disabledBackground: '#f3dec4',
+      hover: '#f3dec4',
     }
   },
   text: {
