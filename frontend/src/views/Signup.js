@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useSignup } from "../hooks/useSignup"
 import { Link as RouterLink } from "react-router-dom";
+import { useSpring, animated } from "react-spring";
 
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
@@ -22,6 +23,11 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false)
   const { signup, error, isLoading } = useSignup()
 
+  const props = useSpring({
+    from: { transform: "translate(40%,0)" },
+    to: { transform: "translate(0,0)" },
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     await signup(username, email, password)
@@ -29,9 +35,11 @@ const Signup = () => {
 
   const handleShowPassword = () => setShowPassword(!showPassword);
 
+  const AnimatedGrid = animated(Grid);
+
   return (
     <Grid container component="main" sx={{ height: '100vh' }}>
-      <Grid item xs={12} sm={7}>
+      <AnimatedGrid item xs={12} sm={7} style={props}>
         <Box
           sx={{
             my: 8,
@@ -75,7 +83,6 @@ const Signup = () => {
               label="Email address"
               name="email"
               autoComplete="email"
-              autoFocus
               color="secondary"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
@@ -127,7 +134,7 @@ const Signup = () => {
             {error && <div className="error">{error}</div>}
           </Box>
         </Box>
-      </Grid>
+      </AnimatedGrid>
       <Grid
         item
         xs={false}
