@@ -2,19 +2,22 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Login from './views/Login'
 import Signup from './views/Signup'
-import Navbar from "./components/Navbar"
+import Home from './views/Home'
 import Modules from "./components/Modules"
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <Navbar /> */}
         <div>
           <Routes>
             <Route
               path="/"
               element={<Login />}
+            />
+            <Route
+              path="/home"
+              element={<Home />}
             />
             <Route
               path="/signup"

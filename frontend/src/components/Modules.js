@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Component } from "react"
+import Navbar from "./Navbar"
 import './Modules.css';
 
 const defaultState = {
@@ -70,6 +71,8 @@ class Modules extends Component {
 
     renderCard(module) {
         return (
+            <>
+            <Navbar />
             <Card className="card">
                 <Card.Header>{module.moduleCode}</Card.Header>
                 <Card.Body>
@@ -80,6 +83,7 @@ class Modules extends Component {
                     <button type="button" class="btn btn-outline-dark">Read More</button>
                 </Card.Body>
             </Card>
+            </>
         )
     }
 
