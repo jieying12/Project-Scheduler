@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Login from './views/Login'
 import Signup from './views/Signup'
+import MainLayout from './layout/MainLayout';
 import Home from './views/Home'
 import Modules from "./components/Modules"
 
@@ -12,13 +13,14 @@ function App() {
         <div>
           <Routes>
             <Route
-              path="/"
+              path="/login"
               element={<Login />}
             />
             <Route
-              path="/home"
-              element={<Home />}
-            />
+              path="/"
+              element={<MainLayout />}>
+              <Route path='home' element={<Home />} />
+            </Route>
             <Route
               path="/signup"
               element={<Signup />}

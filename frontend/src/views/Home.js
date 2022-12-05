@@ -1,12 +1,12 @@
 import Navbar from '../components/Navbar'
-import Timetable from '../components/Timetable'
+import HomeSection from './HomeSection'
 
 export default function Home() {
 
   return (
     <>
-      <Navbar />
-      <Timetable />
+      {/* <Navbar /> */}
+      <HomeSection />
     </>
   )
 }

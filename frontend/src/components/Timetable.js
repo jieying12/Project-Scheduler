@@ -1,4 +1,3 @@
-// import './Timetable.css';
 import Box from '@mui/material/Box';
 
 export default function Homepage() {
