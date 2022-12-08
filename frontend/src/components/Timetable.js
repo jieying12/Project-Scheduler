@@ -30,8 +30,8 @@ export default function Homepage() {
             <Box sx={{ py: '3rem', px: '4rem', borderRadius: '1rem', background: '#D9D9D9' }}>Wednesday</Box>
             <Box sx={{ py: '3rem', px: '4rem', borderRadius: '1rem', background: '#D9D9D9' }}>Thursday</Box>
             <Box sx={{ py: '3rem', px: '4rem', borderRadius: '1rem', background: '#D9D9D9' }}>Friday</Box>
-            <Box sx={{ py: '3rem', px: '4rem', borderRadius: '1rem', background: '#D9D9D9' }}>Saturday</Box>
-            <Box sx={{ py: '3rem', px: '4rem', borderRadius: '1rem', background: '#D9D9D9' }}>Sunday</Box>
+            {/* <Box sx={{ py: '3rem', px: '4rem', borderRadius: '1rem', background: '#D9D9D9' }}>Saturday</Box>
+            <Box sx={{ py: '3rem', px: '4rem', borderRadius: '1rem', background: '#D9D9D9' }}>Sunday</Box> */}
           </Box>
         </Box >
 
@@ -45,7 +45,7 @@ export default function Homepage() {
               py: '0',
               px: '1rem'
             }}>
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '3rem', borderRadius: '1rem', background: '#D9D9D9' }}>/</Box>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '3rem', borderRadius: '1rem', background: '#D9D9D9' }}></Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '3rem', borderRadius: '1rem', background: '#D9D9D9' }}>10:00</Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '3rem', borderRadius: '1rem', background: '#D9D9D9' }}>11:00</Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '3rem', borderRadius: '1rem', background: '#D9D9D9' }}>12:00</Box>

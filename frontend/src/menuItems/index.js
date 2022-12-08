@@ -40,7 +40,7 @@ const items = {
       id: 'all-modules',
       title: 'All Modules',
       type: 'item',
-      url: '/allModules',
+      url: '/modules',
       icon: icons.IconShadow,
       breadcrumbs: false
     },

@@ -26,9 +26,10 @@ function App() {
               element={<Signup />}
             />
             <Route
-              path="/modules"
-              element={<Modules />}
-            />
+              path="/"
+              element={<MainLayout />}>
+              <Route path='/modules' element={<Modules />} />
+            </Route>
           </Routes>
         </div>
       </BrowserRouter>

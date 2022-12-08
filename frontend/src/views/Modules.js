@@ -1,9 +1,6 @@
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Component } from "react"
 import './Modules.css';
-import SearchSection from '../layout/MainLayout/Header/SearchSection/index';
-
 
 const defaultState = {
     modules: [],
@@ -72,16 +69,16 @@ class Modules extends Component {
 
     renderCard(module) {
         return (
-            <div class="card">
-                <div class="card-header">
-                    {module.moduleCode}
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{module.title}</h5>
-                    <p class="card-text">{module.description}</p>
-                    <a href="#" class="btn btn-outline-dark">Read More</a>
-                </div>
-            </div>
+            <Card className="card">
+                <Card.Header>{module.moduleCode}</Card.Header>
+                <Card.Body>
+                    <Card.Title>{module.title}</Card.Title>
+                    <Card.Text>
+                        {module.description}
+                    </Card.Text>
+                    <button type="button" class="btn btn-outline-dark">Read More</button>
+                </Card.Body>
+            </Card>
         )
     }
 
@@ -89,9 +86,6 @@ class Modules extends Component {
         return (
             <div className="content">
                 <div className="container">
-                    {/* <div className="search-container">
-                        <SearchSection/>
-                    </div> */}
                     {this.state.modules.map(module => this.renderCard(module))}
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
