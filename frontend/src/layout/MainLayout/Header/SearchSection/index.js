@@ -1,15 +1,13 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-
 import { useTheme, styled } from '@mui/material/styles';
 import { Avatar, Box, ButtonBase, Card, Grid, InputAdornment, OutlinedInput, Popper } from '@mui/material';
-
 import PopupState, { bindPopper, bindToggle } from 'material-ui-popup-state';
-
 import Transitions from '../../../../components/extended/Transitions';
-
 import { IconAdjustmentsHorizontal, IconSearch, IconX } from '@tabler/icons';
 import { shouldForwardProp } from '@mui/system';
+
+const pathname = window.location.pathname
 
 const PopperStyle = styled(Popper, { shouldForwardProp })(({ theme }) => ({
   zIndex: 1100,
@@ -106,9 +104,20 @@ MobileSearch.propTypes = {
   popupState: PopupState
 };
 
+const handleSumbit = () => {
+  if (pathname == "/modules") {
+    console.log("hello")
+  }
+}
+
 const SearchSection = () => {
   const theme = useTheme();
   const [value, setValue] = useState('');
+
+  const setOnChange = (e) => {
+    setValue(e.target.value);
+    handleSumbit();
+  }
 
   return (
     <>
@@ -156,7 +165,8 @@ const SearchSection = () => {
         <OutlineInputStyle
           id="input-search-header"
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          // onChange={(e) => setValue(e.target.value)}
+          onChange={setOnChange}
           placeholder="Search"
           startAdornment={
             <InputAdornment position="start">

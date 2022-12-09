@@ -4,7 +4,7 @@ import Login from './views/Login'
 import Signup from './views/Signup'
 import MainLayout from './layout/MainLayout';
 import Home from './views/Home'
-import Modules from "./components/Modules"
+import Modules from "./views/Modules"
 
 function App() {
   return (
