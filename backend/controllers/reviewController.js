@@ -5,11 +5,11 @@ const axios = require('axios')
 
 // create a review and concurrently update the module object
 const createReview = async (req, res) => {
-    const {userId, username, text, moduleCode} = req.body
+    const {userId, username, text, rating, moduleCode} = req.body
     let module
 
     try {
-        const review = await Review.create({userId, username, text})
+        const review = await Review.create({userId, username, text, rating})
 
         // find if the module already exist in the database
         module = await Module.find({moduleCode: moduleCode})

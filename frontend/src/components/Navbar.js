@@ -1,6 +1,6 @@
 import { Component } from "react"
 // import { FaHome, FaSave, FaInfoCircle, FaBook } from "react-icons/fa"
-import './Navbar.css';
+import './css/Navbar.css';
 
 class Navbar extends Component {
   render() {

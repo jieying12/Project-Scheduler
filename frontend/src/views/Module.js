@@ -1,6 +1,7 @@
 import './css/Module.css';
 import { useState, useEffect } from 'react'
-import { FaGenderless } from 'react-icons/fa';
+import { FaGenderless } from 'react-icons/fa'
+import ReviewCard from '../components/cards/ReviewCard'
 
 const constants = require('../constants')
 
@@ -55,8 +56,9 @@ function Module(props) {
                 <h5>Workload</h5> 
             </div>
             <div className="container">
-                <h3>Comments</h3>
+                <h3>Reviews</h3>
                 <hr/>
+                {reviews.map(review => <ReviewCard username = {review.username} text = {review.text} rating = {review.rating}/>)}
             </div>
             
         </div>
