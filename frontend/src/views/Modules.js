@@ -1,7 +1,7 @@
 import './css/Modules.css';
 import { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import CardModule from "../components/cards/CardModule"
+import ModuleCard from "../components/cards/ModuleCard"
 
 let reqBody = {
     skip: 0
@@ -62,7 +62,7 @@ function Modules(props) {
     return (
         <div className="content">
             <div className="container">
-                {modules.map(module => <CardModule moduleCode = {module.moduleCode} title = {module.title} description = {module.description}/>)}
+                {modules.map(module => <ModuleCard moduleCode = {module.moduleCode} title = {module.title} description = {module.description}/>)}
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         { skip == 0 ?

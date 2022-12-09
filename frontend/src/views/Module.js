@@ -4,8 +4,12 @@ import { FaGenderless } from 'react-icons/fa';
 
 const constants = require('../constants')
 
-let reqBody = {
+let reqModuleBody = {
     acadYear: constants.CURR_ACADYEAR,
+    moduleCode: ""
+}
+
+let reqReviewsBody = {
     moduleCode: ""
 }
 
@@ -14,20 +18,29 @@ let req = {
     headers: {
         'Content-Type': 'application/json',
     },
-    body: JSON.stringify(reqBody)
+    body: ""
 } 
 
 function Module(props) {
-    const [module, setModule] = useState(null);
+    const [module, setModule] = useState({});
+    const [reviews, setReviews] = useState([]);
 
     useEffect(async () => {
-        reqBody["moduleCode"] = window.location.pathname.split("/")[2]
-        req["body"] = JSON.stringify(reqBody)
-        
+        let moduleCode = window.location.pathname.split("/")[2]
+
+        reqModuleBody["moduleCode"] = moduleCode
+        req["body"] = JSON.stringify(reqModuleBody)
         const module = await fetch('/api/modules/getModule', req)
         const moduleData = await module.json()
         setModule(moduleData)
         console.log(moduleData)
+
+        reqReviewsBody["moduleCode"] = moduleCode
+        req["body"] = JSON.stringify(reqReviewsBody)
+        const reviews = await fetch('/api/review/getReviewsByModule', req)
+        const reviewsData = await reviews.json()
+        setReviews(reviewsData)
+        console.log(reviewsData)
       },[])
 
     
@@ -40,6 +53,10 @@ function Module(props) {
                 <hr/>
                 <p>{module.description}</p>
                 <h5>Workload</h5> 
+            </div>
+            <div className="container">
+                <h3>Comments</h3>
+                <hr/>
             </div>
             
         </div>
