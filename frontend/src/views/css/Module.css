@@ -1,0 +1,16 @@
+.container h1 {
+    color: #FE7D4B;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.container h2 {
+    color: grey;
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.container h5 {
+    color: grey;
+    
+}

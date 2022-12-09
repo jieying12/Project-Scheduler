@@ -6,9 +6,8 @@ const CardModule = (props) => {
     
     const routeChange = (e) => { 
         e.preventDefault();
-        let path = `../` + props.moduleCode; 
+        let path = "../module/" + props.moduleCode; 
         navigate(path);
-        console.log(props.moduleCode)
     }
     
     return (

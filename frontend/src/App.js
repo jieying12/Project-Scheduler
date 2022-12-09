@@ -5,6 +5,7 @@ import Signup from './views/Signup'
 import MainLayout from './layout/MainLayout';
 import Home from './views/Home'
 import Modules from "./views/Modules"
+import Module from "./views/Module"
 
 function App() {
   return (
@@ -29,6 +30,11 @@ function App() {
               path="/"
               element={<MainLayout />}>
               <Route path='/modules' element={<Modules />} />
+            </Route>
+            <Route
+              path="/"
+              element={<MainLayout />}>
+              <Route path='/module/:id' element={<Module />} />
             </Route>
           </Routes>
         </div>
